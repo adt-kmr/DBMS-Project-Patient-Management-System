@@ -59,7 +59,11 @@ app.post('/login', async (req:Request, res:Response) => {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
-    const payload = { userId: user.employeeid };
+    const payload = {
+      employeeid: user.employeeid,
+      email: user.email,
+      role: user.role
+    };
     const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' });
 
     res.json({ token });
@@ -75,6 +79,7 @@ app.post('/verify', (req:Request, res:Response) => {
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
+    console.log("[Container:Auth] /verify : JWT verified");
     res.json({ valid: true, user: decoded });
   } catch (err) {
     res.status(401).json({ valid: false, error: 'Invalid or expired token' });

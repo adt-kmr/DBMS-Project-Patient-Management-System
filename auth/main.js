@@ -57,7 +57,11 @@ app.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     if (!isMatch) {
         return res.status(401).json({ message: 'Invalid email or password' });
     }
-    const payload = { userId: user.employeeid };
+    const payload = {
+        employeeid: user.employeeid,
+        email: user.email,
+        role: user.role
+    };
     const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' });
     res.json({ token });
 }));
@@ -69,6 +73,7 @@ app.post('/verify', (req, res) => {
         return res.status(400).json({ error: 'Token missing' });
     try {
         const decoded = jwt.verify(token, JWT_SECRET);
+        console.log("[Container:Auth] /verify : JWT verified");
         res.json({ valid: true, user: decoded });
     }
     catch (err) {
