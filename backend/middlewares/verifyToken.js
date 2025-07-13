@@ -1,26 +1,29 @@
 // middlewares/verifyToken.js
 import axios from 'axios';
 
+// const AUTH_URL = "http://auth:3000/verify";
+const AUTH_URL = "http://0.0.0.0:3000/verify" 
+
 export const verifyToken = async (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  if (!authHeader?.startsWith('Bearer ')) {
+    return res.status(401).json({ message: 'Missing or invalid Authorization header' });
+  }
+
+  const token = authHeader.split(' ')[1];
+
   try {
-    const authHeader = req.headers['authorization'];
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ message: 'Missing or invalid Authorization header' });
+    const response = await axios.post(AUTH_URL, { token });
+
+    if (!response.data.valid) {
+      return res.status(401).json({ message: 'Token invalid' });
     }
 
-    const token = authHeader.split(' ')[1];
-
-    // Send to Auth container (use internal Docker network name for "auth")
-    const response = await axios.post('http://auth:PORT/verify', { token });
-
-    if (response.data && response.data.valid === false) {
-      return res.status(401).json({ message: 'Invalid token' });
-    }
-
-    req.user = response.data; // This should include employee info from token
+    // Attach the decoded user object to req.user
+    req.user = response.data.user; // This will be: { userId: 3 }
     next();
   } catch (err) {
-    console.error('Token verification failed:', err.message);
-    return res.status(401).json({ message: 'Token verification failed' });
+    console.error('[verifyToken] Error:', err.message);
+    res.status(401).json({ message: 'Token verification failed' });
   }
 };
