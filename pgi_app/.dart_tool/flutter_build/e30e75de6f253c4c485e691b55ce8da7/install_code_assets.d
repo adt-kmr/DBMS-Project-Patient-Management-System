@@ -1,0 +1,1 @@
+ D:\\Patient\ Management\\pgi_app\\.dart_tool\\flutter_build\\e30e75de6f253c4c485e691b55ce8da7\\native_assets.json: 

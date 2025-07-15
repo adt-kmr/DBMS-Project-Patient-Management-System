@@ -1,0 +1,343 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.pgi_app"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="35" />
+10    <!--
+11         The INTERNET permission is required for development. Specifically,
+12         the Flutter tool needs it to communicate with the running application
+13         to allow setting breakpoints, to provide hot reload, etc.
+14    -->
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:8:5-66
+15-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:8:22-64
+16    <!-- ✅ Required permissions -->
+17    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+17-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:5:5-79
+17-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:5:22-77
+18    <uses-permission
+18-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:6:5-80
+19        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+19-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:6:22-78
+20        android:maxSdkVersion="28" />
+20-->[:camera_android_camerax] D:\Patient Management\pgi_app\build\camera_android_camerax\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:13:9-35
+21    <uses-permission android:name="android.permission.CAMERA" />
+21-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:7:5-64
+21-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:7:22-62
+22    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" /> <!-- For file picker -->
+22-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:9:5-81
+22-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:9:22-79
+23    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+23-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:12:5-75
+23-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:12:22-73
+24    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+24-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:13:5-74
+24-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:13:22-72
+25    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" /> <!-- 🔍 Text processing query -->
+25-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:14:5-74
+25-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:14:22-72
+26    <queries>
+26-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:48:5-53:15
+27        <intent>
+27-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:49:9-52:18
+28            <action android:name="android.intent.action.PROCESS_TEXT" />
+28-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:50:13-73
+28-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:50:21-70
+29
+30            <data android:mimeType="text/plain" />
+30-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:51:13-51
+30-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:51:19-48
+31        </intent>
+32        <intent>
+32-->[:file_picker] D:\Patient Management\pgi_app\build\file_picker\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:8:9-12:18
+33            <action android:name="android.intent.action.GET_CONTENT" />
+33-->[:file_picker] D:\Patient Management\pgi_app\build\file_picker\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:13-72
+33-->[:file_picker] D:\Patient Management\pgi_app\build\file_picker\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:21-69
+34
+35            <data android:mimeType="*/*" />
+35-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:51:13-51
+35-->D:\Patient Management\pgi_app\android\app\src\main\AndroidManifest.xml:51:19-48
+36        </intent>
+37    </queries>
+38
+39    <uses-feature android:name="android.hardware.camera.any" />
+39-->[:camera_android_camerax] D:\Patient Management\pgi_app\build\camera_android_camerax\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:7:5-64
+39-->[:camera_android_camerax] D:\Patient Management\pgi_app\build\camera_android_camerax\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:7:19-61
+40
+41    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+41-->[:camera_android_camerax] D:\Patient Management\pgi_app\build\camera_android_camerax\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:5-71
+41-->[:camera_android_camerax] D:\Patient Management\pgi_app\build\camera_android_camerax\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:22-68
+42
+43    <permission
+43-->[androidx.core:core:1.13.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\66aa7f682cf61ffe3ee75db6ee238d77\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+44        android:name="com.example.pgi_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+44-->[androidx.core:core:1.13.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\66aa7f682cf61ffe3ee75db6ee238d77\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+45        android:protectionLevel="signature" />
+45-->[androidx.core:core:1.13.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\66aa7f682cf61ffe3ee75db6ee238d77\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+46
+47    <uses-permission android:name="com.example.pgi_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+47-->[androidx.core:core:1.13.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\66aa7f682cf61ffe3ee75db6ee238d77\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+47-->[androidx.core:core:1.13.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\66aa7f682cf61ffe3ee75db6ee238d77\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+48    <!-- <uses-sdk android:minSdkVersion="14"/> -->
+49    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+49-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Lenovo\.gradle\caches\8.12\transforms\72fb61582bd9f83d336279a04a7593bb\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:25:5-79
+49-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Lenovo\.gradle\caches\8.12\transforms\72fb61582bd9f83d336279a04a7593bb\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:25:22-76
+50
+51    <application
+52        android:name="android.app.Application"
+53        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+53-->[androidx.core:core:1.13.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\66aa7f682cf61ffe3ee75db6ee238d77\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+54        android:debuggable="true"
+55        android:extractNativeLibs="true"
+56        android:icon="@mipmap/ic_launcher"
+57        android:label="pgi_app" >
+58        <activity
+59            android:name="com.example.pgi_app.MainActivity"
+60            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+61            android:exported="true"
+62            android:hardwareAccelerated="true"
+63            android:launchMode="singleTop"
+64            android:taskAffinity=""
+65            android:theme="@style/LaunchTheme"
+66            android:windowSoftInputMode="adjustResize" >
+67            <meta-data
+68                android:name="io.flutter.embedding.android.NormalTheme"
+69                android:resource="@style/NormalTheme" />
+70
+71            <intent-filter>
+72                <action android:name="android.intent.action.MAIN" />
+73
+74                <category android:name="android.intent.category.LAUNCHER" />
+75            </intent-filter>
+76        </activity>
+77
+78        <!-- Don't delete the meta-data below. -->
+79        <meta-data
+80            android:name="flutterEmbedding"
+81            android:value="2" />
+82
+83        <service
+83-->[androidx.camera:camera-camera2:1.5.0-beta01] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a4864d31f5ad80016316091c0dcb3e17\transformed\jetified-camera-camera2-1.5.0-beta01\AndroidManifest.xml:24:9-33:19
+84            android:name="androidx.camera.core.impl.MetadataHolderService"
+84-->[androidx.camera:camera-camera2:1.5.0-beta01] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a4864d31f5ad80016316091c0dcb3e17\transformed\jetified-camera-camera2-1.5.0-beta01\AndroidManifest.xml:25:13-75
+85            android:enabled="false"
+85-->[androidx.camera:camera-camera2:1.5.0-beta01] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a4864d31f5ad80016316091c0dcb3e17\transformed\jetified-camera-camera2-1.5.0-beta01\AndroidManifest.xml:26:13-36
+86            android:exported="false" >
+86-->[androidx.camera:camera-camera2:1.5.0-beta01] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a4864d31f5ad80016316091c0dcb3e17\transformed\jetified-camera-camera2-1.5.0-beta01\AndroidManifest.xml:27:13-37
+87            <meta-data
+87-->[androidx.camera:camera-camera2:1.5.0-beta01] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a4864d31f5ad80016316091c0dcb3e17\transformed\jetified-camera-camera2-1.5.0-beta01\AndroidManifest.xml:30:13-32:89
+88                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
+88-->[androidx.camera:camera-camera2:1.5.0-beta01] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a4864d31f5ad80016316091c0dcb3e17\transformed\jetified-camera-camera2-1.5.0-beta01\AndroidManifest.xml:31:17-103
+89                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
+89-->[androidx.camera:camera-camera2:1.5.0-beta01] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a4864d31f5ad80016316091c0dcb3e17\transformed\jetified-camera-camera2-1.5.0-beta01\AndroidManifest.xml:32:17-86
+90        </service>
+91
+92        <provider
+92-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:9-17:20
+93            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+93-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:13-82
+94            android:authorities="com.example.pgi_app.flutter.image_provider"
+94-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:13-74
+95            android:exported="false"
+95-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:12:13-37
+96            android:grantUriPermissions="true" >
+96-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:13:13-47
+97            <meta-data
+97-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:14:13-16:75
+98                android:name="android.support.FILE_PROVIDER_PATHS"
+98-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:15:17-67
+99                android:resource="@xml/flutter_image_picker_file_paths" />
+99-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:16:17-72
+100        </provider> <!-- Trigger Google Play services to install the backported photo picker module. -->
+101        <service
+101-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:19:9-31:19
+102            android:name="com.google.android.gms.metadata.ModuleDependencies"
+102-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:20:13-78
+103            android:enabled="false"
+103-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:21:13-36
+104            android:exported="false" >
+104-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:22:13-37
+105            <intent-filter>
+105-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:24:13-26:29
+106                <action android:name="com.google.android.gms.metadata.MODULE_DEPENDENCIES" />
+106-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:25:17-94
+106-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:25:25-91
+107            </intent-filter>
+108
+109            <meta-data
+109-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:28:13-30:36
+110                android:name="photopicker_activity:0:required"
+110-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:29:17-63
+111                android:value="" />
+111-->[:image_picker_android] D:\Patient Management\pgi_app\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:30:17-33
+112        </service>
+113        <service
+113-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\d2f7b6b9d2dbe29d0ce5619dd4abd4ac\transformed\jetified-play-services-mlkit-text-recognition-common-19.1.0\AndroidManifest.xml:9:9-15:19
+114            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
+114-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\d2f7b6b9d2dbe29d0ce5619dd4abd4ac\transformed\jetified-play-services-mlkit-text-recognition-common-19.1.0\AndroidManifest.xml:10:13-91
+115            android:directBootAware="true"
+115-->[com.google.mlkit:common:18.11.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\7920e2d8fbc5f1c4937fd19b86483eb5\transformed\jetified-common-18.11.0\AndroidManifest.xml:17:13-43
+116            android:exported="false" >
+116-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\d2f7b6b9d2dbe29d0ce5619dd4abd4ac\transformed\jetified-play-services-mlkit-text-recognition-common-19.1.0\AndroidManifest.xml:11:13-37
+117            <meta-data
+117-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\d2f7b6b9d2dbe29d0ce5619dd4abd4ac\transformed\jetified-play-services-mlkit-text-recognition-common-19.1.0\AndroidManifest.xml:12:13-14:85
+118                android:name="com.google.firebase.components:com.google.mlkit.vision.text.internal.TextRegistrar"
+118-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\d2f7b6b9d2dbe29d0ce5619dd4abd4ac\transformed\jetified-play-services-mlkit-text-recognition-common-19.1.0\AndroidManifest.xml:13:17-114
+119                android:value="com.google.firebase.components.ComponentRegistrar" />
+119-->[com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\d2f7b6b9d2dbe29d0ce5619dd4abd4ac\transformed\jetified-play-services-mlkit-text-recognition-common-19.1.0\AndroidManifest.xml:14:17-82
+120            <meta-data
+120-->[com.google.mlkit:vision-common:17.3.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\5bb132f9fe0f024fbd8775a173ddb857\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:12:13-14:85
+121                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
+121-->[com.google.mlkit:vision-common:17.3.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\5bb132f9fe0f024fbd8775a173ddb857\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:13:17-124
+122                android:value="com.google.firebase.components.ComponentRegistrar" />
+122-->[com.google.mlkit:vision-common:17.3.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\5bb132f9fe0f024fbd8775a173ddb857\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:14:17-82
+123            <meta-data
+123-->[com.google.mlkit:common:18.11.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\7920e2d8fbc5f1c4937fd19b86483eb5\transformed\jetified-common-18.11.0\AndroidManifest.xml:20:13-22:85
+124                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
+124-->[com.google.mlkit:common:18.11.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\7920e2d8fbc5f1c4937fd19b86483eb5\transformed\jetified-common-18.11.0\AndroidManifest.xml:21:17-120
+125                android:value="com.google.firebase.components.ComponentRegistrar" />
+125-->[com.google.mlkit:common:18.11.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\7920e2d8fbc5f1c4937fd19b86483eb5\transformed\jetified-common-18.11.0\AndroidManifest.xml:22:17-82
+126        </service>
+127
+128        <provider
+128-->[com.google.mlkit:common:18.11.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\7920e2d8fbc5f1c4937fd19b86483eb5\transformed\jetified-common-18.11.0\AndroidManifest.xml:9:9-13:38
+129            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
+129-->[com.google.mlkit:common:18.11.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\7920e2d8fbc5f1c4937fd19b86483eb5\transformed\jetified-common-18.11.0\AndroidManifest.xml:10:13-78
+130            android:authorities="com.example.pgi_app.mlkitinitprovider"
+130-->[com.google.mlkit:common:18.11.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\7920e2d8fbc5f1c4937fd19b86483eb5\transformed\jetified-common-18.11.0\AndroidManifest.xml:11:13-69
+131            android:exported="false"
+131-->[com.google.mlkit:common:18.11.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\7920e2d8fbc5f1c4937fd19b86483eb5\transformed\jetified-common-18.11.0\AndroidManifest.xml:12:13-37
+132            android:initOrder="99" />
+132-->[com.google.mlkit:common:18.11.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\7920e2d8fbc5f1c4937fd19b86483eb5\transformed\jetified-common-18.11.0\AndroidManifest.xml:13:13-35
+133
+134        <activity
+134-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\e1f6d2e0b1aa38467964f5b59b4f29f9\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:9-173
+135            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+135-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\e1f6d2e0b1aa38467964f5b59b4f29f9\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:19-85
+136            android:exported="false"
+136-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\e1f6d2e0b1aa38467964f5b59b4f29f9\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:146-170
+137            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+137-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\e1f6d2e0b1aa38467964f5b59b4f29f9\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:86-145
+138
+139        <meta-data
+139-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\1186d146da5ef23629d7bf94e5a0d382\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:9-122
+140            android:name="com.google.android.gms.version"
+140-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\1186d146da5ef23629d7bf94e5a0d382\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:20-65
+141            android:value="@integer/google_play_services_version" />
+141-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\1186d146da5ef23629d7bf94e5a0d382\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:66-119
+142
+143        <uses-library
+143-->[androidx.window:window:1.2.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\197f12b192a3f06912c946d4cbd2dd7d\transformed\jetified-window-1.2.0\AndroidManifest.xml:23:9-25:40
+144            android:name="androidx.window.extensions"
+144-->[androidx.window:window:1.2.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\197f12b192a3f06912c946d4cbd2dd7d\transformed\jetified-window-1.2.0\AndroidManifest.xml:24:13-54
+145            android:required="false" />
+145-->[androidx.window:window:1.2.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\197f12b192a3f06912c946d4cbd2dd7d\transformed\jetified-window-1.2.0\AndroidManifest.xml:25:13-37
+146        <uses-library
+146-->[androidx.window:window:1.2.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\197f12b192a3f06912c946d4cbd2dd7d\transformed\jetified-window-1.2.0\AndroidManifest.xml:26:9-28:40
+147            android:name="androidx.window.sidecar"
+147-->[androidx.window:window:1.2.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\197f12b192a3f06912c946d4cbd2dd7d\transformed\jetified-window-1.2.0\AndroidManifest.xml:27:13-51
+148            android:required="false" />
+148-->[androidx.window:window:1.2.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\197f12b192a3f06912c946d4cbd2dd7d\transformed\jetified-window-1.2.0\AndroidManifest.xml:28:13-37
+149
+150        <provider
+150-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\2f9e30b92e09a4c79f34f925067bc407\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+151            android:name="androidx.startup.InitializationProvider"
+151-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\2f9e30b92e09a4c79f34f925067bc407\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+152            android:authorities="com.example.pgi_app.androidx-startup"
+152-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\2f9e30b92e09a4c79f34f925067bc407\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+153            android:exported="false" >
+153-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\2f9e30b92e09a4c79f34f925067bc407\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+154            <meta-data
+154-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\2f9e30b92e09a4c79f34f925067bc407\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+155                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+155-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\2f9e30b92e09a4c79f34f925067bc407\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+156                android:value="androidx.startup" />
+156-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\2f9e30b92e09a4c79f34f925067bc407\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+157            <meta-data
+157-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\0c7cd1674da718ccee593f79cf8da244\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
+158                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+158-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\0c7cd1674da718ccee593f79cf8da244\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
+159                android:value="androidx.startup" />
+159-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Lenovo\.gradle\caches\8.12\transforms\0c7cd1674da718ccee593f79cf8da244\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+160            <meta-data
+160-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+161                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+161-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+162                android:value="androidx.startup" />
+162-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+163        </provider>
+164
+165        <receiver
+165-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+166            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+166-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+167            android:directBootAware="false"
+167-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+168            android:enabled="true"
+168-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+169            android:exported="true"
+169-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+170            android:permission="android.permission.DUMP" >
+170-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+171            <intent-filter>
+171-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+172                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+172-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+172-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+173            </intent-filter>
+174            <intent-filter>
+174-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+175                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+175-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+175-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+176            </intent-filter>
+177            <intent-filter>
+177-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+178                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+178-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+178-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+179            </intent-filter>
+180            <intent-filter>
+180-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+181                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+181-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+181-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Lenovo\.gradle\caches\8.12\transforms\a41c77be64ae79775eea5abf0296f1bb\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+182            </intent-filter>
+183        </receiver>
+184
+185        <service
+185-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Lenovo\.gradle\caches\8.12\transforms\72fb61582bd9f83d336279a04a7593bb\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:29:9-35:19
+186            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+186-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Lenovo\.gradle\caches\8.12\transforms\72fb61582bd9f83d336279a04a7593bb\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:30:13-103
+187            android:exported="false" >
+187-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Lenovo\.gradle\caches\8.12\transforms\72fb61582bd9f83d336279a04a7593bb\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:31:13-37
+188            <meta-data
+188-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Lenovo\.gradle\caches\8.12\transforms\72fb61582bd9f83d336279a04a7593bb\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:32:13-34:39
+189                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+189-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Lenovo\.gradle\caches\8.12\transforms\72fb61582bd9f83d336279a04a7593bb\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:33:17-94
+190                android:value="cct" />
+190-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Lenovo\.gradle\caches\8.12\transforms\72fb61582bd9f83d336279a04a7593bb\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:34:17-36
+191        </service>
+192        <service
+192-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Lenovo\.gradle\caches\8.12\transforms\ebb2b13e005f0ac5e2119519316b451d\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:26:9-30:19
+193            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+193-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Lenovo\.gradle\caches\8.12\transforms\ebb2b13e005f0ac5e2119519316b451d\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:27:13-117
+194            android:exported="false"
+194-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Lenovo\.gradle\caches\8.12\transforms\ebb2b13e005f0ac5e2119519316b451d\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:28:13-37
+195            android:permission="android.permission.BIND_JOB_SERVICE" >
+195-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Lenovo\.gradle\caches\8.12\transforms\ebb2b13e005f0ac5e2119519316b451d\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:29:13-69
+196        </service>
+197
+198        <receiver
+198-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Lenovo\.gradle\caches\8.12\transforms\ebb2b13e005f0ac5e2119519316b451d\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:32:9-34:40
+199            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+199-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Lenovo\.gradle\caches\8.12\transforms\ebb2b13e005f0ac5e2119519316b451d\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:33:13-132
+200            android:exported="false" />
+200-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Lenovo\.gradle\caches\8.12\transforms\ebb2b13e005f0ac5e2119519316b451d\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:34:13-37
+201    </application>
+202
+203</manifest>

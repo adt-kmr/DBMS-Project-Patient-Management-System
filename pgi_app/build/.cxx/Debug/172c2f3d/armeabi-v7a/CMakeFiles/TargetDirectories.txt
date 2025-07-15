@@ -1,0 +1,2 @@
+D:/Patient Management/pgi_app/build/.cxx/Debug/172c2f3d/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/Patient Management/pgi_app/build/.cxx/Debug/172c2f3d/armeabi-v7a/CMakeFiles/rebuild_cache.dir

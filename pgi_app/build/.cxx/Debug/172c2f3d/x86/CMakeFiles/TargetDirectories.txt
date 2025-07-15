@@ -1,0 +1,2 @@
+D:/Patient Management/pgi_app/build/.cxx/Debug/172c2f3d/x86/CMakeFiles/edit_cache.dir
+D:/Patient Management/pgi_app/build/.cxx/Debug/172c2f3d/x86/CMakeFiles/rebuild_cache.dir
