@@ -12,7 +12,7 @@ app.use(express.json());
 
 //AUTH URL
 /////////////////////////////////////////////////////////
-const auth_url = "http://0.0.0.0:3000/login";////////////
+const auth_url = "http://auth:3000/login";///////////////
 /////////////////////////////////////////////////////////
 
 
@@ -33,46 +33,43 @@ router.get("/", (req: Request, res: Response) => {
 
 
 router.post("/login", async (req: Request, res: Response) => {
-
     Log("/login", "POST", 200);
 
-    console.log("19", req.body);
-    let payload = req.body;
-        if (!payload || !payload.email || !payload.password){
-            res.json({
-                error:"Bad Payload."
-            });
-        }
-    let Response;
-    try{
-        Response = await fetch(auth_url, {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(400).json({
+            error: "Bad Payload."
+        });
+    }
+
+    try {
+        const Response = await fetch(auth_url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                email: payload.email,
-                password: payload.password
-            })
+            body: JSON.stringify({ email, password })
         });
-    }
-    catch(e){
-        console.log("Some problem occured while contacting auth container. Error: "+e);
-        res.json({
-            error:"Unable to login, Some error occured in backend.",
-            e:e
-        });
-    }
-    if (Response) {
-        let responce = await Response.json();
-        console.log("Responce from auth container: ", responce);
-        res.send(responce);
-    } else {
-        res.json({
-            error: "Unable to login, Internal responce from server is undefined."
+
+        if (!Response.ok) {
+            console.error("Auth container responded with error:", Response.status);
+            return res.status(500).json({ error: "Auth container error." });
+        }
+
+        const json = await Response.json();
+        console.log("Response from auth container: ", json);
+        return res.json(json);
+
+    } catch (e) {
+        console.error("Some problem occurred while contacting auth container. Error:", e);
+        return res.status(500).json({
+            error: "Unable to login, Some error occurred in backend.",
+            details: e
         });
     }
 });
+
 
 router.get("/patients", verifyToken, async (req: any, res: Response) => {
     try {

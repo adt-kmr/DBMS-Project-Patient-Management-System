@@ -1,8 +1,8 @@
 // middlewares/verifyToken.js
 import axios from 'axios';
 
-// const AUTH_URL = "http://auth:3000/verify";
-const AUTH_URL = "http://0.0.0.0:3000/verify" 
+const AUTH_URL = "http://auth:3000/verify";
+// const AUTH_URL = "http://0.0.0.0:3000/verify" 
 
 export const verifyToken = async (req, res, next) => {
   const authHeader = req.headers['authorization'];
