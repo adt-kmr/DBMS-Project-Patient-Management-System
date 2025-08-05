@@ -1,3 +1,41 @@
 auth/node_modules
 db-init/node_modules
 backend/node_modules
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+local_settings.py
+
+# Django migrations
+**/migrations/
+!*/migrations/__init__.py
+
+# VSCode / JetBrains
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Environment
+.env
+.env.*
+
+# Virtual Envs
+venv/
+ENV/
+env/
+.venv/
+
