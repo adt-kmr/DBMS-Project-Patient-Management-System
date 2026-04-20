@@ -51,8 +51,24 @@ model Report {
   patientid     Int? 
   type_         String    @db.VarChar(100) @map("type")
   date_uploaded DateTime? 
+  previous_hash String?   @db.Text
+  current_hash  String?   @db.Text
 
   patient       Patient?  @relation(fields: [patientid], references: [patientid])
 
   @@map("reports")
+}
+
+model PatientHistory {
+  id           Int      @id @default(autoincrement())
+  patientid    Int
+  name         String   @db.VarChar(100)
+  age          Int
+  gender       String   @db.VarChar(10)
+  phone_number String?  @db.VarChar(20)
+  changed_at   DateTime @default(now())
+  changed_by   Int?
+  operation    String   @db.VarChar(10)
+
+  @@map("patient_history")
 }

@@ -3,7 +3,37 @@ import Log from "./logger.js";
 import { PrismaClient } from './generated/prisma/client.js';
 import { verifyToken } from './middlewares/verifyToken.js';
 import  CheckBADJSON  from "./middlewares/JsonErrorChecker.js"
-const prisma = new PrismaClient();
+
+// Initialize base Prisma Client
+const basePrisma = new PrismaClient();
+
+/**
+ * Senior Developer Note: 
+ * We extend the Prisma client to support Row-Level Security (RLS).
+ * The $withUser extension ensures that every database operation is wrapped 
+ * in a transaction that sets the 'app.current_employee_id' session variable.
+ * This triggers the RLS policies defined in PostgreSQL.
+ */
+const prisma = basePrisma.$extends({
+    client: {
+        $withUser(employeeId: number) {
+            return basePrisma.$extends({
+                query: {
+                    $allModels: {
+                        async $allOperations({ args, query }) {
+                            // Run in a transaction to ensure set_config and query share the same connection
+                            const [, result] = await basePrisma.$transaction([
+                                basePrisma.$executeRawUnsafe(`SELECT set_config('app.current_employee_id', '${employeeId}', true)`),
+                                query(args)
+                            ]);
+                            return result;
+                        }
+                    }
+                }
+            });
+        }
+    }
+});
 
 const app: Application = express();
 const router = express.Router();
@@ -19,18 +49,7 @@ const auth_url = "http://auth:3000/login";///////////////
 router.get("/", (req: Request, res: Response) => {
     Log("/", "GET", 200);
     res.send("HALO");
-    // res.type("json");
 });
-
-// interface AuthenticatedRequest extends Request {
-//   user?: {
-//     userId: number;
-//     email: string;
-//     role: string;
-//   };
-// }
-
-
 
 router.post("/login", async (req: Request, res: Response) => {
     Log("/login", "POST", 200);
@@ -58,7 +77,6 @@ router.post("/login", async (req: Request, res: Response) => {
         }
 
         const json = await Response.json();
-        console.log("Response from auth container: ", json);
         return res.json(json);
 
     } catch (e) {
@@ -73,16 +91,14 @@ router.post("/login", async (req: Request, res: Response) => {
 
 router.get("/patients", verifyToken, async (req: any, res: Response) => {
     try {
-        let employeeid = req?.user?.employeeid;
+        const employeeid = req.user.employeeid;
+        
+        // Use the secure RLS-aware Prisma client
+        const securePrisma = prisma.$withUser(employeeid);
 
-        const patients = await prisma.patient.findMany({
-            where: {
-                prescriptions: {
-                    some: {
-                        employeeid: employeeid
-                    }
-                }
-            },
+        // Notice we no longer need complex 'where' clauses to filter by employeeid.
+        // The RLS policy on the database handles the filtering automatically!
+        const patients = await securePrisma.patient.findMany({
             include: {
                 reports: true 
             }
@@ -94,6 +110,7 @@ router.get("/patients", verifyToken, async (req: any, res: Response) => {
         res.status(500).json({ error: "Internal server error" });
     }
 });
+
 router.get("/patient/:id", verifyToken, async (req: any, res: Response) => {
   const patientId = parseInt(req.params.id);
 
@@ -102,7 +119,10 @@ router.get("/patient/:id", verifyToken, async (req: any, res: Response) => {
   }
 
   try {
-    const patient = await prisma.patient.findUnique({
+    const employeeid = req.user.employeeid;
+    const securePrisma = prisma.$withUser(employeeid);
+
+    const patient = await securePrisma.patient.findUnique({
       where: { patientid: patientId },
       include: {
         reports: true,
@@ -115,14 +135,9 @@ router.get("/patient/:id", verifyToken, async (req: any, res: Response) => {
     });
 
     if (!patient) {
-      return res.status(404).json({ error: "Patient not found" });
-    }
-
-    const doctorId = req.user.employeeid;
-    const isAllowed = patient.prescriptions.some(p => p.employeeid === doctorId);
-
-    if (!isAllowed) {
-      return res.status(403).json({ error: "Access denied" });
+      // If RLS filters the record, findUnique will return null, 
+      // which is perfect for security (no distinguishability between "forbidden" and "not found").
+      return res.status(404).json({ error: "Patient not found or access denied" });
     }
 
     return res.json({ patient });
@@ -137,7 +152,10 @@ router.get("/account", verifyToken, async (req: any, res: Response) => {
   const employeeid = req.user.employeeid;
 
   try {
-    const doctor = await prisma.employee.findUnique({
+    const securePrisma = prisma.$withUser(employeeid);
+    
+    // RLS on the 'employees' table will ensure only this employee's data is returned
+    const doctor = await securePrisma.employee.findUnique({
       where: { employeeid },
       select: {
         employeeid: true,
@@ -172,6 +190,38 @@ router.get("/account", verifyToken, async (req: any, res: Response) => {
   }
 });
 
+// NOVELTY FEATURE: Medical History (Time Machine)
+// This endpoint retrieves all past versions of a patient's record.
+router.get("/patient/:id/history", verifyToken, async (req: any, res: Response) => {
+  const patientId = parseInt(req.params.id);
+
+  if (isNaN(patientId)) {
+    return res.status(400).json({ error: "Invalid patient ID" });
+  }
+
+  try {
+    const employeeid = req.user.employeeid;
+    const securePrisma = prisma.$withUser(employeeid);
+
+    // Fetch history from the patient_history table
+    // RLS on patient_history ensures only authorized doctors see this.
+    const history = await securePrisma.patientHistory.findMany({
+      where: { patientid: patientId },
+      orderBy: { changed_at: 'desc' }
+    });
+
+    return res.json({ 
+        patient_id: patientId,
+        version_count: history.length,
+        history 
+    });
+
+  } catch (err) {
+    console.error("Error fetching patient history:", err);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 
 /////////Mounting all the middlewares//////////
 // Mounting JSON Checker
@@ -183,4 +233,4 @@ app.use("/", router);
 const port = process.env.BACKEND_PORT || 8080;
 app.listen(port, () => {
     console.log(`Backend running on port ${port}`);
-});
+});
